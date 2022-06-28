@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
 import { IndexComponent } from './components/index/index.component';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
 
 @NgModule({
-  declarations: [AppComponent, AyudaComponent, IndexComponent],
+  declarations: [AppComponent, AyudaComponent, IndexComponent, PokemonComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
