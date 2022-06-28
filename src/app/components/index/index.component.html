@@ -1,2 +1,6 @@
-<p>index works!</p>
+<ul>
+    <li *ngFor="let poke of pokemon">
+        <a [href]="poke.url">{{poke.name}}</a>
+    </li>
+</ul>
 
