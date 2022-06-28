@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, isDevMode, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'pokedex';
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    if (isDevMode()) {
+      console.info('dev mode');
+    } else {
+      console.info('production mode');
+    }
+  }
 }
