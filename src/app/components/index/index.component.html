@@ -1,6 +1,5 @@
 <ul>
     <li *ngFor="let poke of pokemon">
-        <a [href]="poke.url">{{poke.name}}</a>
+        <a routerLink="/pokemon/{{poke.name}}">{{poke.name}}</a>
     </li>
 </ul>
-

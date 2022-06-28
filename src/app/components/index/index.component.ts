@@ -10,7 +10,7 @@ import { PokemonService } from '../../services/pokemon.service';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  public pokemon: Pokemon[] = [];
+  public pokemon: Pokemon[] = [];  
 
   constructor(private pokemonService: PokemonService) {}
 
