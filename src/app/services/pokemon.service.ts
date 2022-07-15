@@ -24,24 +24,19 @@ export class PokemonService {
    * getListPokemon
    */
   public getListaPokemon(): Observable<Pagination> {
-    this.log.info('Obteniendo lista de Pokémon');
-    // return this.http.get<Pagination>(`${this.baseUri}/pokemon/`).pipe(
-    //   tap((_) => this.log.info('Peticion terminada')),
-    //   catchError(
-    //     this.error.handleError<Pagination>('getListaPokemon', {} as Pagination)
-    //   )
-    // );
+    //this.log.info('Obteniendo lista de Pokémon');
     return this.http.get<Pagination>(`${this.baseUri}/pokemon/`);
   }
 
   public getPokemon(name: string): Observable<Pokemon> {
-    this.log.info('Obteniendo Pokémon');
+    //this.log.info('Obteniendo Pokémon');
     const url = `${this.baseUri}/pokemon/${name}`;
-    return this.http.get<Pokemon>(url).pipe(
-      tap((_) => this.log.info(`Pokémon ${name} encontrado`)),
-      catchError(
-        this.error.handleError<Pokemon>('getPokemon', undefined)
-      )
-    );
+    return this.http.get<Pokemon>(url);
+    // .pipe(
+    //   tap((_) => this.log.info(`Pokémon ${name} encontrado`)),
+    //   catchError(
+    //     this.error.handleError<Pokemon>('getPokemon', undefined)
+    //   )
+    // );
   }
 }

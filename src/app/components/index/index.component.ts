@@ -24,28 +24,14 @@ export class IndexComponent implements OnInit {
    * getListaPokemon
    */
   public getListaPokemon(): void {
-    // this.pokemonService.getListaPokemon().subscribe((response) => {
-    //   this.pokemon = response['results'] as Pokemon[];
-    // });
-    // this.pokemonService.getListaPokemon().pipe(
-    //   mergeMap((res) => res.results),
-    //   map((p) => {
-    //     this.pokemonService.getPokemon(p['name']).subscribe(poke => this.pokemon.push(poke))
-    //   })
-    // ).subscribe((data) => {
-    //   // this.pokemonService.getPokemon(data['name']).subscribe(p => {
-    //   //   this.pokemon.push(p);
-    //   // });
-    //   this.pokemon.sort((a,b) => a.order - b.order);
-    // });
     this.pokemonService.getListaPokemon().subscribe(response => {
+      console.log(response);
       const arr: Observable<Pokemon>[] = [];
       response.results.forEach(r => {
         arr.push(this.pokemonService.getPokemon(r["name"]));
       });
       forkJoin(arr).subscribe(pokemon => {
         this.pokemon = pokemon;
-        console.log(pokemon);
       });
     });
   }
