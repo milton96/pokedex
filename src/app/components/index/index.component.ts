@@ -12,7 +12,7 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class IndexComponent implements OnInit {
   public pokemon: Pokemon[] = [];
-  public pokemonTemp: Pokemon[] = [];  
+  public pokemonTemp: Pokemon[] = [];
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -23,8 +23,8 @@ export class IndexComponent implements OnInit {
   /**
    * getListaPokemon
    */
-  public getListaPokemon(): void {
-    this.pokemonService.getListaPokemon().subscribe(response => {
+  public getListaPokemon(url?: string): void {
+    this.pokemonService.getListaPokemon(url).subscribe(response => {
       console.log(response);
       const arr: Observable<Pokemon>[] = [];
       response.results.forEach(r => {

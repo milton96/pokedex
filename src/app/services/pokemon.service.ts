@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -23,9 +23,15 @@ export class PokemonService {
   /**
    * getListPokemon
    */
-  public getListaPokemon(): Observable<Pagination> {
+  public getListaPokemon(url?: string): Observable<Pagination> {
     //this.log.info('Obteniendo lista de Pokémon');
-    return this.http.get<Pagination>(`${this.baseUri}/pokemon/`);
+    if (url) {
+      return this.http.get<Pagination>(url);
+    }
+    
+    let params = new HttpParams();
+    params = params.append("limit", environment.limitPoke).append("offset", "0");
+    return this.http.get<Pagination>(`${this.baseUri}/pokemon`, { params: params });
   }
 
   public getPokemon(name: string): Observable<Pokemon> {

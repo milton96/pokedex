@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUri: 'https://pokeapi.co/api/v2'
+  baseUri: 'https://pokeapi.co/api/v2',
+  limitPoke: 50
 };
 
 /*

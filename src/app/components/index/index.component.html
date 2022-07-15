@@ -17,9 +17,9 @@
         <div class="uk-width-expand uk-text-center">
           <img src="{{ poke.sprites.front_default }}" class="uk-width-1-1" />
         </div>
-        <div class="uk-child-width-1-2" uk-grid>
+        <div class="uk-child-width-1-2 uk-flex-center" uk-grid>
           <div *ngFor="let type of poke.types">
-            <div class="type" [ngClass]="type.type.name">
+            <div class="type" [ngClass]="type.type.name" style="width: 100%;">
               <span>{{ type.type.name }}</span>
             </div>
           </div>
