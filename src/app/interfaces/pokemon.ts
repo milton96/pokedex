@@ -4,8 +4,17 @@ export interface Pokemon {
     url: string;
     sprites: Sprites;
     order: number;
+    types: Type[];
 }
 
 interface Sprites {
     front_default: string
+}
+
+interface Type {
+    slot: number;
+    type: {
+        name: string;
+        url: string;
+    }    
 }

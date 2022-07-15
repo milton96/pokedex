@@ -45,6 +45,7 @@ export class IndexComponent implements OnInit {
       });
       forkJoin(arr).subscribe(pokemon => {
         this.pokemon = pokemon;
+        console.log(pokemon);
       });
     });
   }
