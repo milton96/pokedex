@@ -23,7 +23,7 @@ export class PokemonService {
   /**
    * getListPokemon
    */
-  public getListaPokemon(url?: string): Observable<Pagination> {
+  public getListaPokemon(url?: string|null|undefined): Observable<Pagination> {
     //this.log.info('Obteniendo lista de Pokémon');
     if (url) {
       return this.http.get<Pagination>(url);

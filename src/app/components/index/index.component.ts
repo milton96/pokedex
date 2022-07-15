@@ -12,7 +12,9 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class IndexComponent implements OnInit {
   public pokemon: Pokemon[] = [];
-  public pokemonTemp: Pokemon[] = [];
+
+  private _next: string|null|undefined = null;
+  private _previous: string|null|undefined = null;
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -23,9 +25,10 @@ export class IndexComponent implements OnInit {
   /**
    * getListaPokemon
    */
-  public getListaPokemon(url?: string): void {
+  public getListaPokemon(url?: string|null|undefined): void {
     this.pokemonService.getListaPokemon(url).subscribe(response => {
-      console.log(response);
+      this._next = response.next;
+      this._previous = response.previous;
       const arr: Observable<Pokemon>[] = [];
       response.results.forEach(r => {
         arr.push(this.pokemonService.getPokemon(r["name"]));
@@ -34,5 +37,15 @@ export class IndexComponent implements OnInit {
         this.pokemon = pokemon;
       });
     });
+  }
+
+  public next() {
+    if (this._next)
+      this.getListaPokemon(this._next);
+  }
+
+  public previous() {
+    if (this._previous)
+      this.getListaPokemon(this._previous);
   }
 }

@@ -1,5 +1,20 @@
+<div class="uk-margin-bottom">
+  <div class="uk-flex uk-flex-between">
+    <div>
+      <div>
+        <button type="button" class="uk-button uk-button-secondary" (click)="previous()">Anterior</button>
+      </div>
+    </div>
+    <div>
+      <div>
+        <button type="button" class="uk-button uk-button-secondary" (click)="next()">Siguiente</button>
+      </div>
+    </div>    
+  </div>
+</div>
+
 <div
-  class="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-flex-center uk-text-capitalize"
+  class="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-flex-center uk-margin-bottom"
   uk-grid
 >
   <div *ngFor="let poke of pokemon">
