@@ -1,8 +1,35 @@
 .type {
     color: #fff;
     text-transform: uppercase;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Press Start 2P';
 }
 
 .grass {
     background-color: green;
+}
+
+.poison {
+    background-color: purple;
+}
+
+.fire {
+    background-color: orangered;
+}
+
+.flying {
+    background-color: #b0d9ee;
+}
+
+.water {
+    background-color: #2196F3;
+}
+
+.bug {
+    background-color: #CDDC39;
+}
+
+.normal {
+    background-color: #9E9E9E;
 }
