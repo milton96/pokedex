@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map, mergeMap } from 'rxjs';
 
 import { Pokemon } from 'src/app/interfaces/pokemon';
 
@@ -10,7 +11,8 @@ import { PokemonService } from '../../services/pokemon.service';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  public pokemon: Pokemon[] = [];  
+  public pokemon: Pokemon[] = [];
+  public pokemonTemp: Pokemon[] = [];  
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -22,8 +24,19 @@ export class IndexComponent implements OnInit {
    * getListaPokemon
    */
   public getListaPokemon(): void {
-    this.pokemonService.getListaPokemon().subscribe((response) => {
-      this.pokemon = response['results'] as Pokemon[];
-    });
+    // this.pokemonService.getListaPokemon().subscribe((response) => {
+    //   this.pokemon = response['results'] as Pokemon[];
+    // });
+    this.pokemonService.getListaPokemon().pipe(
+      mergeMap((res) => res.results),
+      map((p) => {
+        this.pokemonService.getPokemon(p['name']).subscribe(poke => this.pokemon.push(poke))
+      })
+    ).subscribe((data) => {
+      // this.pokemonService.getPokemon(data['name']).subscribe(p => {
+      //   this.pokemon.push(p);
+      // });
+      this.pokemon.sort((a,b) => a.order - b.order);
+    })
   }
 }

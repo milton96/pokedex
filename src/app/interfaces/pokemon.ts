@@ -2,7 +2,8 @@ export interface Pokemon {
     id: number;
     name: string;
     url: string;
-    sprites: Sprites
+    sprites: Sprites;
+    order: number;
 }
 
 interface Sprites {
